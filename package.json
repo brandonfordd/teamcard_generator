@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/brandonfordd/teamcard_generator/issues"
   },
-  "homepage": "https://github.com/brandonfordd/teamcard_generator#readme"
+  "homepage": "https://github.com/brandonfordd/teamcard_generator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
 }
