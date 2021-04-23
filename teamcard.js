@@ -4,6 +4,7 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const style = require("./assets/css/style");
 
 //empty arry for employees to be stored
 const employees = [];
@@ -104,6 +105,7 @@ function startHtml() {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Team Profile</title>
+        <style> ${style} </style>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark mb-5">
@@ -131,39 +133,54 @@ function addHtml(member) {
             data = 
             
             `<div class="col-6">
-                <div class="card mx-auto mb-3" style="width: 18rem">
-                <h5 class="card-header">${name}<br /><br />Engineer</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email Address: ${email}</li>
-                    <li class="list-group-item">GitHub: ${gitHub}</li>
-                </ul>
+                <div class="card mx-auto mb-6">
+                    <div class="card-header">
+                        <h5> ${name}</h5>
+                        <div class="row positionC"> 
+                            <h5 class="black">Position:</h5><h5>${role}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${id}</li>
+                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">GitHub: ${gitHub}</li>
+                    </ul>
                 </div>
             </div>`;
         } else if (role === "Intern") {
             const school = member.getSchool();
             data = 
             `<div class="col-6">
-                <div class="card mx-auto mb-3" style="width: 18rem">
-                <h5 class="card-header">${name}<br /><br />Intern</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email Address: ${email}</li>
-                    <li class="list-group-item">School: ${school}</li>
-                </ul>
+                <div class="card mx-auto mb-6">
+                    <div class="card-header">
+                        <h5> ${name}</h5>
+                        <div class="row positionC"> 
+                            <h5 class="black">Position:</h5><h5>${role}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${id}</li>
+                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">School: ${school}</li>
+                    </ul>
                 </div>
             </div>`;
         } else {
             const officePhone = member.getOfficeNumber();
             data =
             `<div class="col-6">
-                <div class="card mx-auto mb-3" style="width: 18rem">
-                <h5 class="card-header">${name}<br /><br />Manager</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email Address: ${email}</li>
-                    <li class="list-group-item">Office Phone: ${officePhone}</li>
-                </ul>
+                <div class="card mx-auto mb-6">
+                    <div class="card-header">
+                        <h5> ${name}</h5>
+                        <div class="row positionC"> 
+                            <h5 class="black">Position:</h5><h5>${role}</h5>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${id}</li>
+                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Office Phone: ${officePhone}</li>
+                    </ul>
                 </div>
             </div>`
         }
