@@ -5,13 +5,16 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
+//empty arry for employees to be stored
 const employees = [];
 
+//main function to run once the app is started
 function initApp() {
     startHtml();
     addMember();
 }
-// get user input to display on cards 
+
+// get user input to display on cards/ add members to cards
 function addMember() {
     inquirer.prompt([{
         message: "Enter team member's name",
@@ -56,7 +59,7 @@ function addMember() {
                 "no"
             ],
             name: "moreMembers"
-        }])
+        }]) //adding new members to list if yes is choosen
         .then(function({roleInfo, moreMembers}) {
             let newMember;
             if (role === "Engineer") {
@@ -65,9 +68,11 @@ function addMember() {
                 newMember = new Intern(name, id, email, roleInfo);
             } else {
                 newMember = new Manager(name, id, email, roleInfo);
-            }
+            } //push new member to employees
             employees.push(newMember);
+            //add the new member to the html
             addHtml(newMember)
+            //check to see if clients want to add more members, if yes then add members function is repeated 
             .then(function() {
                 if (moreMembers === "yes") {
                     addMember();
@@ -88,6 +93,7 @@ function addMember() {
 //     finishHtml();
 // }
 
+// first function ran after init. this will generated code then write it on a html card in dist
 function startHtml() {
     const html =
     `<!DOCTYPE html>
@@ -112,7 +118,7 @@ function startHtml() {
     });
     console.log("start");
 }
-// adding input to html generated on line 91
+// adding input to html generated on line 94
 function addHtml(member) {
     return new Promise(function(resolve, reject) {
         const name = member.getName();
@@ -122,40 +128,44 @@ function addHtml(member) {
         let data = "";
         if (role === "Engineer") {
             const gitHub = member.getGithub();
-            data = `<div class="col-6">
-            <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Engineer</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
-                <li class="list-group-item">GitHub: ${gitHub}</li>
-            </ul>
-            </div>
-        </div>`;
+            data = 
+            
+            `<div class="col-6">
+                <div class="card mx-auto mb-3" style="width: 18rem">
+                <h5 class="card-header">${name}<br /><br />Engineer</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email Address: ${email}</li>
+                    <li class="list-group-item">GitHub: ${gitHub}</li>
+                </ul>
+                </div>
+            </div>`;
         } else if (role === "Intern") {
             const school = member.getSchool();
-            data = `<div class="col-6">
-            <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Intern</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
-                <li class="list-group-item">School: ${school}</li>
-            </ul>
-            </div>
-        </div>`;
+            data = 
+            `<div class="col-6">
+                <div class="card mx-auto mb-3" style="width: 18rem">
+                <h5 class="card-header">${name}<br /><br />Intern</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email Address: ${email}</li>
+                    <li class="list-group-item">School: ${school}</li>
+                </ul>
+                </div>
+            </div>`;
         } else {
             const officePhone = member.getOfficeNumber();
-            data = `<div class="col-6">
-            <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Manager</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
-                <li class="list-group-item">Office Phone: ${officePhone}</li>
-            </ul>
-            </div>
-        </div>`
+            data =
+            `<div class="col-6">
+                <div class="card mx-auto mb-3" style="width: 18rem">
+                <h5 class="card-header">${name}<br /><br />Manager</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email Address: ${email}</li>
+                    <li class="list-group-item">Office Phone: ${officePhone}</li>
+                </ul>
+                </div>
+            </div>`
         }
         console.log("adding team member");
         fs.appendFile("./dist/team.html", data, function (err) {
@@ -174,6 +184,7 @@ function addHtml(member) {
 }
 
 function finishHtml() {
+    //adding divs to the end of html once all cards have been added
     const html = ` </div>
     </div>
     
@@ -185,7 +196,7 @@ function finishHtml() {
             console.log(err);
         };
     });
-    console.log("end");
+    console.log("Congrats! Your team profile has been generated, collect html in dist directory");
 }
 
 // addMember();
@@ -194,4 +205,6 @@ function finishHtml() {
 // .then(function() {
 // finishHtml();
 // });
+
+//start he app
 initApp();
