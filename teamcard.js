@@ -86,14 +86,6 @@ function addMember() {
     });
 }
 
-// function renderHtml(memberArray) {
-//     startHtml();
-//     for (const member of memberArray) {
-//         addHtml(member);
-//     }
-//     finishHtml();
-// }
-
 // first function ran after init. this will generated code then write it on a html card in dist
 function startHtml() {
     const html =
@@ -130,8 +122,7 @@ function addHtml(member) {
         let data = "";
         if (role === "Engineer") {
             const gitHub = member.getGithub();
-            data = 
-            
+            data =
             `<div class="col-6">
                 <div class="card mx-auto mb-6">
                     <div class="card-header">
@@ -142,8 +133,8 @@ function addHtml(member) {
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
-                        <li class="list-group-item">GitHub: ${gitHub}</li>
+                        <li class="list-group-item">Email Address: <a href="mailto:${email}">${email}</a></li>
+                        <li class="list-group-item">GitHub: <a target="_blank" href="https://github.com/${gitHub}"> ${gitHub}</a></li>
                     </ul>
                 </div>
             </div>`;
@@ -160,7 +151,7 @@ function addHtml(member) {
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Email Address: <a href="mailto:${email}">${email}</a></li>
                         <li class="list-group-item">School: ${school}</li>
                     </ul>
                 </div>
@@ -178,7 +169,7 @@ function addHtml(member) {
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Email Address: <a href="mailto:${email}">${email}</a></li>
                         <li class="list-group-item">Office Phone: ${officePhone}</li>
                     </ul>
                 </div>
@@ -215,13 +206,6 @@ function finishHtml() {
     });
     console.log("Congrats! Your team profile has been generated, collect html in dist directory");
 }
-
-// addMember();
-// startHtml();
-// addHtml("hi")
-// .then(function() {
-// finishHtml();
-// });
 
 //start he app
 initApp();
