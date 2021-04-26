@@ -61,7 +61,7 @@ brandonfordd
 
     Using "npm run test" jest will run a test through functions checking to see if they will come out correct
 
-![alt text](https://github.com/brandonfordd/teamcard_generator/blob/main/assets/images/test.png?raw=true)
+![alt text](https://github.com/brandonfordd/teamcard_generator/blob/main/assets/images/tests.png?raw=true)
 
 
 ## Questions?
