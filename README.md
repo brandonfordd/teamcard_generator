@@ -57,6 +57,13 @@ brandonfordd
 ![GIF](https://github.com/brandonfordd/teamcard_generator/blob/main/assets/gifs/team_profile.gif?raw=true)
 
 
+
+
+    Using "npm run test" jest will run a test through functions checking to see if they will come out correct
+
+![alt text](https://github.com/brandonfordd/teamcard_generator/blob/main/assets/images/test.png?raw=true)
+
+
 ## Questions?
 ![Developer Profile Picture](https://avatars.githubusercontent.com/u/78278104?v=4) 
 
